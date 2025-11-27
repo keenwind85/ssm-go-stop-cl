@@ -152,8 +152,14 @@ export const startGame = async (roomId: string, room: GameRoom): Promise<void> =
     specialEvents: [],
   };
 
-  await setDoc(gameDoc(roomId), gameState);
-  await updateDoc(roomDoc(roomId), { status: 'playing' });
+  try {
+    await setDoc(gameDoc(roomId), gameState);
+    await updateDoc(roomDoc(roomId), { status: 'playing' });
+  } catch (error) {
+    console.error('Firestore 저장 에러:', error);
+    console.error('gameState:', JSON.stringify(gameState, null, 2));
+    throw error;
+  }
 };
 
 // 게임 상태 구독

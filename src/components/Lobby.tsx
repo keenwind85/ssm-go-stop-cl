@@ -118,11 +118,17 @@ const Lobby: React.FC<LobbyProps> = ({ onGameStart }) => {
   const handleStartGame = async () => {
     if (!currentRoom || !isHost) return;
 
+    if (!currentRoom.challengerId) {
+      setError('도전자가 아직 입장하지 않았습니다.');
+      return;
+    }
+
     setIsLoading(true);
     try {
       await startGame(currentRoom.id, currentRoom);
-    } catch (err) {
-      setError('게임 시작에 실패했습니다.');
+    } catch (err: any) {
+      console.error('게임 시작 에러:', err);
+      setError(`게임 시작에 실패했습니다: ${err.message || err}`);
       setIsLoading(false);
     }
   };
