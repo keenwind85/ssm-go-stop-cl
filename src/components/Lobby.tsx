@@ -8,6 +8,7 @@ import {
   subscribeToRoom,
   startGame,
 } from '../firebase/roomService';
+import logoSvg from '../assets/logo.svg';
 
 interface LobbyProps {
   onGameStart: (roomId: string, playerId: string) => void;
@@ -155,9 +156,12 @@ const Lobby: React.FC<LobbyProps> = ({ onGameStart }) => {
           initial={{ y: -20 }}
           animate={{ y: 0 }}
         >
-          <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-red-500 mb-2">
-            🎴 맞고
-          </h1>
+          <div className="flex items-center justify-center gap-3 mb-2">
+            <img src={logoSvg} alt="로고" className="w-10 h-10" />
+            <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-red-500">
+              순시미네 맞고
+            </h1>
+          </div>
           <p className="text-gray-400 text-sm">실시간 1:1 대전</p>
         </motion.div>
 
