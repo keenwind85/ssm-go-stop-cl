@@ -76,13 +76,9 @@ const Card: React.FC<CardProps> = ({
         </div>
       )}
 
-      {/* 선택 가능 표시 */}
+      {/* 플레이 가능 테두리 효과 */}
       {isPlayable && (
-        <motion.div
-          className="absolute inset-0 bg-blue-500 bg-opacity-0 hover:bg-opacity-20"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-        />
+        <div className="absolute inset-0 rounded-lg border-2 border-yellow-400 border-opacity-50 pointer-events-none" />
       )}
     </motion.div>
   );
