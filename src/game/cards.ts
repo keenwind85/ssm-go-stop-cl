@@ -98,15 +98,21 @@ const getCardImagePath = (month: CardMonth, index: CardIndex): string => {
 
 // 전체 화투 덱 생성
 export const createDeck = (): HwaTuCard[] => {
-  return CARD_DEFINITIONS.map(def => ({
-    id: createCardId(def.month, def.index),
-    month: def.month,
-    index: def.index,
-    type: def.type,
-    subType: def.subType,
-    imagePath: getCardImagePath(def.month, def.index),
-    points: def.points,
-  }));
+  return CARD_DEFINITIONS.map(def => {
+    const card: HwaTuCard = {
+      id: createCardId(def.month, def.index),
+      month: def.month,
+      index: def.index,
+      type: def.type,
+      imagePath: getCardImagePath(def.month, def.index),
+      points: def.points,
+    };
+    // subType이 있는 경우에만 추가 (undefined는 Firestore에서 에러 발생)
+    if (def.subType) {
+      card.subType = def.subType;
+    }
+    return card;
+  });
 };
 
 // 덱 셔플 (Fisher-Yates 알고리즘)
