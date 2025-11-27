@@ -8,15 +8,16 @@ interface CardProps {
   isSelected?: boolean;
   isPlayable?: boolean;
   isMatching?: boolean;
+  hasFieldMatch?: boolean; // 바닥에 같은 월 카드가 있는지
   onClick?: () => void;
   size?: 'small' | 'medium' | 'large';
   delay?: number;
 }
 
 const sizeClasses = {
-  small: 'w-12 h-18',
-  medium: 'w-16 h-24',
-  large: 'w-20 h-30',
+  small: 'w-16 h-24',
+  medium: 'w-24 h-36',
+  large: 'w-32 h-48',
 };
 
 const Card: React.FC<CardProps> = ({
@@ -25,6 +26,7 @@ const Card: React.FC<CardProps> = ({
   isSelected = false,
   isPlayable = false,
   isMatching = false,
+  hasFieldMatch = false,
   onClick,
   size = 'medium',
   delay = 0,
@@ -34,11 +36,12 @@ const Card: React.FC<CardProps> = ({
   return (
     <motion.div
       className={`
-        relative cursor-pointer rounded-lg overflow-hidden shadow-lg
+        relative cursor-pointer rounded-xl overflow-hidden shadow-lg
         ${sizeClasses[size]}
-        ${isSelected ? 'ring-4 ring-yellow-400 ring-opacity-75' : ''}
-        ${isPlayable ? 'hover:scale-110 hover:-translate-y-2' : ''}
-        ${isMatching ? 'ring-4 ring-green-400 ring-opacity-75 animate-pulse' : ''}
+        ${isSelected ? 'ring-4 ring-yellow-400 ring-opacity-100' : ''}
+        ${isPlayable && !hasFieldMatch ? 'hover:scale-105 hover:-translate-y-2' : ''}
+        ${isPlayable && hasFieldMatch ? 'ring-4 ring-green-400 ring-opacity-100 hover:scale-110 hover:-translate-y-3' : ''}
+        ${isMatching ? 'ring-4 ring-green-400 ring-opacity-100 animate-pulse' : ''}
         transition-all duration-200
       `}
       initial={{ scale: 0, rotateY: 180 }}
@@ -77,8 +80,19 @@ const Card: React.FC<CardProps> = ({
       )}
 
       {/* 플레이 가능 테두리 효과 */}
-      {isPlayable && (
-        <div className="absolute inset-0 rounded-lg border-2 border-yellow-400 border-opacity-50 pointer-events-none" />
+      {isPlayable && !hasFieldMatch && (
+        <div className="absolute inset-0 rounded-xl border-2 border-yellow-400 border-opacity-50 pointer-events-none" />
+      )}
+
+      {/* 바닥패와 매칭되는 카드 강조 */}
+      {hasFieldMatch && (
+        <motion.div
+          className="absolute inset-0 rounded-xl border-3 border-green-400 pointer-events-none"
+          animate={{
+            boxShadow: ['0 0 10px #4ade80', '0 0 25px #4ade80', '0 0 10px #4ade80']
+          }}
+          transition={{ repeat: Infinity, duration: 1.5 }}
+        />
       )}
     </motion.div>
   );

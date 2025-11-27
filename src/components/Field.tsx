@@ -26,7 +26,7 @@ const Field: React.FC<FieldProps> = ({
   const matchingIds = new Set(matchingCards.map(c => c.id));
 
   return (
-    <div className="relative bg-green-800 rounded-2xl p-4 min-h-[200px] shadow-inner">
+    <div className="relative bg-green-800 rounded-2xl p-4 min-h-[160px] shadow-inner">
       {/* 바닥 패턴 */}
       <div className="absolute inset-0 bg-gradient-to-br from-green-700 to-green-900 rounded-2xl opacity-50" />
 
@@ -36,7 +36,7 @@ const Field: React.FC<FieldProps> = ({
       </div>
 
       {/* 카드 배치 */}
-      <div className="relative grid grid-cols-6 gap-2 mt-6 p-2">
+      <div className="relative grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-1 mt-6 p-2">
         <AnimatePresence mode="popLayout">
           {cards.map((card, index) => (
             <motion.div

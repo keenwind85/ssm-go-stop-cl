@@ -310,7 +310,7 @@ const GameBoard: React.FC<GameBoardProps> = ({ roomId, playerId }) => {
               <img
                 src={CARD_BACK_IMAGE}
                 alt="덱"
-                className="w-16 h-24 rounded-lg shadow-lg"
+                className="w-20 h-30 rounded-lg shadow-lg"
               />
             </motion.div>
             <span className="text-gray-400 text-xs mt-1">
@@ -363,6 +363,7 @@ const GameBoard: React.FC<GameBoardProps> = ({ roomId, playerId }) => {
           selectedCardId={selectedHandCard?.id}
           onCardSelect={handleHandCardSelect}
           playerName={myPlayer.nickname}
+          fieldCards={gameState.field}
         />
 
         {/* 내 점수판 */}

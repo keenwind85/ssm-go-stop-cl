@@ -9,6 +9,7 @@ interface HandProps {
   selectedCardId?: string;
   onCardSelect?: (card: HwaTuCard) => void;
   playerName: string;
+  fieldCards?: HwaTuCard[]; // 바닥 카드 (매칭 확인용)
 }
 
 const Hand: React.FC<HandProps> = ({
@@ -18,9 +19,19 @@ const Hand: React.FC<HandProps> = ({
   selectedCardId,
   onCardSelect,
   playerName,
+  fieldCards = [],
 }) => {
-  // 카드를 월별로 정렬
+  // 바닥에 있는 카드의 월 목록
+  const fieldMonths = new Set(fieldCards.map(card => card.month));
+
+  // 카드를 월별로 정렬 (매칭되는 카드를 앞으로)
   const sortedCards = [...cards].sort((a, b) => {
+    const aHasMatch = fieldMonths.has(a.month);
+    const bHasMatch = fieldMonths.has(b.month);
+    // 매칭되는 카드를 앞으로
+    if (aHasMatch && !bHasMatch) return -1;
+    if (!aHasMatch && bHasMatch) return 1;
+    // 같은 그룹 내에서는 월별로 정렬
     if (a.month !== b.month) return a.month - b.month;
     return a.index - b.index;
   });
@@ -47,7 +58,7 @@ const Hand: React.FC<HandProps> = ({
               key={card.id}
               className="relative"
               style={{
-                marginLeft: index === 0 ? 0 : -15,
+                marginLeft: index === 0 ? 0 : -20,
                 zIndex: selectedCardId === card.id ? 100 : index,
               }}
               layout
@@ -57,6 +68,7 @@ const Hand: React.FC<HandProps> = ({
                 isBack={!isMyHand}
                 isSelected={selectedCardId === card.id}
                 isPlayable={isMyHand && isCurrentTurn}
+                hasFieldMatch={isMyHand && isCurrentTurn && fieldMonths.has(card.month)}
                 onClick={() => isMyHand && isCurrentTurn && onCardSelect?.(card)}
                 size="medium"
                 delay={index * 0.05}
