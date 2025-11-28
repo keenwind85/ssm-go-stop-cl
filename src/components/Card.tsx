@@ -36,7 +36,7 @@ const Card: React.FC<CardProps> = ({
   return (
     <motion.div
       className={`
-        relative cursor-pointer rounded-xl overflow-hidden shadow-lg
+        relative cursor-pointer rounded-xl shadow-lg overflow-visible
         ${sizeClasses[size]}
         ${isSelected ? 'ring-4 ring-primary-8 ring-opacity-100' : ''}
         ${isPlayable && !hasFieldMatch ? 'hover:scale-105 hover:-translate-y-2' : ''}
@@ -65,7 +65,7 @@ const Card: React.FC<CardProps> = ({
       <img
         src={imageSrc}
         alt={card ? `${card.month}월 ${card.index}번` : '카드 뒷면'}
-        className="w-full h-full object-cover"
+        className="w-full h-full object-cover rounded-xl"
         draggable={false}
       />
 
