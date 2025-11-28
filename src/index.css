@@ -30,7 +30,7 @@
 
 body {
   font-family: 'Pretendard', 'Roboto Flex', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background-color: var(--color-secondary-light);
+  background-color: #3A4807; /* 모일웹 당김 시에도 보이도록 보드 펠트 색상 고정 */
   color: var(--color-gray-10);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;

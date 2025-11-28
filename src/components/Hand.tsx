@@ -37,7 +37,7 @@ const Hand: React.FC<HandProps> = ({
   });
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center w-full">
       {/* 플레이어 이름 */}
       <motion.div
         className={`
@@ -51,31 +51,30 @@ const Hand: React.FC<HandProps> = ({
       </motion.div>
 
       {/* 카드 패 */}
-      <div className="flex justify-center items-end gap-[-10px] relative">
-        <AnimatePresence>
-          {sortedCards.map((card, index) => (
-            <motion.div
-              key={card.id}
-              className="relative"
-              style={{
-                marginLeft: index === 0 ? 0 : -20,
-                zIndex: selectedCardId === card.id ? 100 : index,
-              }}
-              layout
-            >
-              <Card
-                card={card}
-                isBack={!isMyHand}
-                isSelected={selectedCardId === card.id}
-                isPlayable={isMyHand && isCurrentTurn}
-                hasFieldMatch={isMyHand && isCurrentTurn && fieldMonths.has(card.month)}
-                onClick={() => isMyHand && isCurrentTurn && onCardSelect?.(card)}
-                size="medium"
-                delay={index * 0.05}
-              />
-            </motion.div>
-          ))}
-        </AnimatePresence>
+      <div className="w-full overflow-x-auto py-2">
+        <div className="inline-flex items-end gap-2 px-4">
+          <AnimatePresence>
+            {sortedCards.map((card, index) => (
+              <motion.div
+                key={card.id}
+                className="relative shrink-0"
+                style={{ zIndex: selectedCardId === card.id ? 100 : index }}
+                layout
+              >
+                <Card
+                  card={card}
+                  isBack={!isMyHand}
+                  isSelected={selectedCardId === card.id}
+                  isPlayable={isMyHand && isCurrentTurn}
+                  hasFieldMatch={isMyHand && isCurrentTurn && fieldMonths.has(card.month)}
+                  onClick={() => isMyHand && isCurrentTurn && onCardSelect?.(card)}
+                  size="medium"
+                  delay={index * 0.05}
+                />
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </div>
       </div>
 
       {/* 카드 수 */}
