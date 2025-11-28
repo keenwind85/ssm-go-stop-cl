@@ -51,8 +51,8 @@ const Hand: React.FC<HandProps> = ({
       </motion.div>
 
       {/* 카드 패 */}
-      <div className="w-full overflow-x-auto py-2">
-        <div className="inline-flex items-end gap-2 px-4">
+      <div className="w-full overflow-x-auto py-2 hand-scroll">
+        <div className="inline-flex items-end gap-2 px-4 min-w-max">
           <AnimatePresence>
             {sortedCards.map((card, index) => (
               <motion.div

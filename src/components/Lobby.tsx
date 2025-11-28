@@ -145,24 +145,24 @@ const Lobby: React.FC<LobbyProps> = ({ onGameStart }) => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary-2 via-secondary-light to-gray-1 flex items-center justify-center p-4">
       <motion.div
-        className="bg-white/90 backdrop-blur-xl rounded-3xl p-8 max-w-md w-full shadow-2xl"
+        className="panel-soft rounded-3xl p-8 max-w-md w-full shadow-2xl"
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ type: 'spring', stiffness: 200 }}
       >
         {/* 타이틀 */}
         <motion.div
-          className="text-center mb-8"
+          className="text-center mb-10"
           initial={{ y: -20 }}
           animate={{ y: 0 }}
         >
           <div className="flex items-center justify-center gap-3 mb-2">
             <img src={logoSvg} alt="로고" className="w-10 h-10" />
-            <h1 className="typo-h1 text-black">
+            <h1 className="typo-h1 text-black text-[26px] leading-8 font-extrabold">
               순시미네 맞고
             </h1>
           </div>
-          <p className="typo-body2 text-gray-7">실시간 1:1 대전</p>
+          <p className="typo-body1 text-gray-8 font-semibold">실시간 1:1 대전</p>
         </motion.div>
 
         {/* 에러 메시지 */}
@@ -182,33 +182,35 @@ const Lobby: React.FC<LobbyProps> = ({ onGameStart }) => {
         {/* 모드 선택 */}
         {mode === 'select' && (
           <motion.div
-            className="space-y-4"
+            className="space-y-3"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
           >
-            <motion.button
-              className="w-full bg-[#DA2F36] text-white font-semibold py-4 px-6 rounded-xl text-lg shadow-lg"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              onClick={() => setMode('create')}
-            >
-              🏠 방 만들기
-              <div className="text-xs font-normal mt-1 text-primary-2">
-                새 게임방을 만들고 초대코드로 친구 초대
-              </div>
-            </motion.button>
+            <div className="space-y-3">
+              <motion.button
+                className="w-full bg-[#DA2F36] text-white font-semibold py-3.5 px-6 rounded-xl text-lg shadow-lg"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => setMode('create')}
+              >
+                🏠 방 만들기
+                <div className="text-xs font-normal mt-1 text-primary-2">
+                  새 게임방을 만들고 초대코드로 친구 초대
+                </div>
+              </motion.button>
 
-            <motion.button
-              className="w-full bg-[#DA2F36] text-white font-semibold py-4 px-6 rounded-xl text-lg shadow-lg"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              onClick={() => setMode('join')}
-            >
-              🎯 도전하기
-              <div className="text-xs font-normal mt-1 text-primary-2">
-                초대코드로 상대방 게임방에 입장
-              </div>
-            </motion.button>
+              <motion.button
+                className="w-full bg-[#DA2F36] text-white font-semibold py-3.5 px-6 rounded-xl text-lg shadow-lg"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => setMode('join')}
+              >
+                🎯 도전하기
+                <div className="text-xs font-normal mt-1 text-primary-2">
+                  초대코드로 상대방 게임방에 입장
+                </div>
+              </motion.button>
+            </div>
           </motion.div>
         )}
 
@@ -243,7 +245,7 @@ const Lobby: React.FC<LobbyProps> = ({ onGameStart }) => {
               />
             </div>
 
-            <div className="flex gap-3">
+            <div className="flex gap-3 mt-1">
               <button
                 className="flex-1 bg-gray-3 text-gray-9 py-3 rounded-lg"
                 onClick={() => setMode('select')}
@@ -251,7 +253,7 @@ const Lobby: React.FC<LobbyProps> = ({ onGameStart }) => {
                 뒤로
               </button>
               <motion.button
-                className="flex-1 bg-gradient-to-r from-primary-10 to-primary-8 text-gray-1 font-semibold py-3 rounded-lg"
+                className="flex-1 bg-[#DA2F36] text-white font-semibold py-3 rounded-lg"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={handleCreateRoom}
@@ -294,7 +296,7 @@ const Lobby: React.FC<LobbyProps> = ({ onGameStart }) => {
               />
             </div>
 
-            <div className="flex gap-3">
+            <div className="flex gap-3 mt-1">
               <button
                 className="flex-1 bg-gray-3 text-gray-9 py-3 rounded-lg"
                 onClick={() => setMode('select')}
@@ -302,7 +304,7 @@ const Lobby: React.FC<LobbyProps> = ({ onGameStart }) => {
                 뒤로
               </button>
               <motion.button
-                className="flex-1 bg-gradient-to-r from-secondary-dark to-primary-10 text-gray-1 font-semibold py-3 rounded-lg"
+                className="flex-1 bg-[#DA2F36] text-white font-semibold py-3 rounded-lg"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={handleJoinRoom}

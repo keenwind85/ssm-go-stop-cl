@@ -176,6 +176,22 @@ body {
   50% { transform: translate(-50%, 2px); }
 }
 
+.hand-scroll {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  scroll-padding-left: 16px;
+  scroll-padding-right: 16px;
+}
+
+.hand-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.hand-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.35);
+  border-radius: 9999px;
+}
+
 /* 고스톱 판 배경 및 영역 구분 */
 .board-felt {
   background-color: #3A4807;
@@ -204,6 +220,12 @@ body {
   border: 1px solid rgba(255, 112, 108, 0.35);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(4px);
+}
+
+.panel-soft {
+  background: rgba(255, 242, 237, 0.88);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 112, 108, 0.15);
 }
 
 @layer utilities {
