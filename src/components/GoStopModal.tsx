@@ -27,7 +27,7 @@ const GoStopModal: React.FC<GoStopModalProps> = ({
           exit={{ opacity: 0 }}
         >
           <motion.div
-            className="bg-gradient-to-br from-purple-900 to-indigo-900 rounded-2xl p-6 max-w-sm w-full mx-4 shadow-2xl border-2 border-yellow-400"
+            className="bg-gradient-to-br from-primary-10 to-primary-8 rounded-2xl p-6 max-w-sm w-full mx-4 shadow-2xl border-2 border-primary-4 text-white"
             initial={{ scale: 0.5, y: 50 }}
             animate={{ scale: 1, y: 0 }}
             exit={{ scale: 0.5, y: 50 }}
@@ -35,7 +35,7 @@ const GoStopModal: React.FC<GoStopModalProps> = ({
           >
             {/* 타이틀 */}
             <motion.h2
-              className="text-3xl font-bold text-center text-yellow-400 mb-4"
+              className="text-3xl font-bold text-center text-white mb-4"
               animate={{ scale: [1, 1.05, 1] }}
               transition={{ repeat: Infinity, duration: 1.5 }}
             >
@@ -43,11 +43,11 @@ const GoStopModal: React.FC<GoStopModalProps> = ({
             </motion.h2>
 
             {/* 점수 표시 */}
-            <div className="bg-black bg-opacity-30 rounded-xl p-4 mb-4">
+            <div className="bg-white/15 rounded-xl p-4 mb-4">
               <div className="text-center">
-                <span className="text-gray-400 text-sm">현재 점수</span>
+                <span className="text-white text-sm">현재 점수</span>
                 <motion.div
-                  className="text-5xl font-bold text-yellow-300"
+                  className="text-5xl font-bold text-white"
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{ delay: 0.2, type: 'spring' }}
@@ -55,7 +55,7 @@ const GoStopModal: React.FC<GoStopModalProps> = ({
                   {score}점
                 </motion.div>
                 {goCount > 0 && (
-                  <div className="text-orange-400 text-sm mt-1">
+                  <div className="text-white text-sm mt-1">
                     ({goCount}고 적용시 {score * Math.pow(2, goCount + 1)}점)
                   </div>
                 )}
@@ -67,7 +67,7 @@ const GoStopModal: React.FC<GoStopModalProps> = ({
                   {yakuList.map((yaku, idx) => (
                     <motion.span
                       key={yaku}
-                      className="bg-yellow-500 text-black text-xs px-2 py-1 rounded-full font-bold"
+                      className="bg-white/20 text-white text-xs px-2 py-1 rounded-full font-bold"
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.3 + idx * 0.1 }}
@@ -82,7 +82,7 @@ const GoStopModal: React.FC<GoStopModalProps> = ({
             {/* 버튼 */}
             <div className="flex gap-4">
               <motion.button
-                className="flex-1 bg-gradient-to-r from-red-500 to-orange-500 text-white font-bold py-4 px-6 rounded-xl text-xl shadow-lg"
+                className="flex-1 bg-gradient-to-r from-white/40 to-primary-2 text-white font-semibold py-4 px-6 rounded-xl text-xl shadow-lg"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={onGo}
@@ -94,7 +94,7 @@ const GoStopModal: React.FC<GoStopModalProps> = ({
               </motion.button>
 
               <motion.button
-                className="flex-1 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold py-4 px-6 rounded-xl text-xl shadow-lg"
+                className="flex-1 bg-gradient-to-r from-primary-6 to-primary-10 text-white font-semibold py-4 px-6 rounded-xl text-xl shadow-lg"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={onStop}
@@ -109,7 +109,7 @@ const GoStopModal: React.FC<GoStopModalProps> = ({
             {/* 현재 고 횟수 */}
             {goCount > 0 && (
               <motion.div
-                className="mt-4 text-center text-yellow-400"
+                className="mt-4 text-center text-white"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
               >

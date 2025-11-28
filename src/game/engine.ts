@@ -164,6 +164,42 @@ export const endTurn = (
   // 플레이어 점수 업데이트
   player.score = totalScore;
 
+  // 덱/손패 소진 시 즉시 게임 종료 처리
+  if (checkGameEnd(state)) {
+    // 최종 점수 계산 후 승자 결정
+    let winnerId: string | null = null;
+    let topScore = -Infinity;
+    Object.entries(state.players).forEach(([pid, p]) => {
+      const { totalScore: ts, yakuList: yl } = calculateTotalScore(p.captured);
+      const finalScore = calculateFinalScore(ts, state.goCount[pid] || 0);
+      if (finalScore > topScore) {
+        topScore = finalScore;
+        winnerId = pid;
+      } else if (finalScore === topScore) {
+        winnerId = null; // 무승부
+      }
+      // 점수 반영
+      p.score = ts;
+    });
+
+    state.phase = 'finished';
+    state.finalScore = topScore;
+    state.winner = winnerId || undefined;
+    if (winnerId) {
+      const winner = state.players[winnerId];
+      const { yakuList: winnerYaku } = calculateTotalScore(winner.captured);
+      state.specialEvents.push(`${winner.nickname}이(가) ${topScore}점으로 승리! (${winnerYaku.join(', ')})`);
+    } else {
+      state.specialEvents.push('덱과 손패가 모두 소진되어 무승부 처리');
+    }
+
+    // 선택 상태 초기화
+    delete state.selectedCard;
+    delete state.matchingCards;
+
+    return { newState: state, canGoStop: false, score: totalScore, yakuList };
+  }
+
   // 다음 턴으로
   const playerIds = Object.keys(state.players);
   const currentIndex = playerIds.indexOf(playerId);

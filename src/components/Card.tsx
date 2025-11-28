@@ -38,10 +38,10 @@ const Card: React.FC<CardProps> = ({
       className={`
         relative cursor-pointer rounded-xl overflow-hidden shadow-lg
         ${sizeClasses[size]}
-        ${isSelected ? 'ring-4 ring-yellow-400 ring-opacity-100' : ''}
+        ${isSelected ? 'ring-4 ring-primary-8 ring-opacity-100' : ''}
         ${isPlayable && !hasFieldMatch ? 'hover:scale-105 hover:-translate-y-2' : ''}
-        ${isPlayable && hasFieldMatch ? 'ring-4 ring-green-400 ring-opacity-100 hover:scale-110 hover:-translate-y-3' : ''}
-        ${isMatching ? 'ring-4 ring-green-400 ring-opacity-100 animate-pulse' : ''}
+        ${isPlayable && hasFieldMatch ? 'ring-4 ring-primary-10 ring-opacity-100 hover:scale-110 hover:-translate-y-3 neon-border' : ''}
+        ${isMatching ? 'ring-4 ring-primary-8 ring-opacity-100 animate-pulse' : ''}
         transition-all duration-200
       `}
       initial={{ scale: 0, rotateY: 180 }}
@@ -81,18 +81,29 @@ const Card: React.FC<CardProps> = ({
 
       {/* 플레이 가능 테두리 효과 */}
       {isPlayable && !hasFieldMatch && (
-        <div className="absolute inset-0 rounded-xl border-2 border-yellow-400 border-opacity-50 pointer-events-none" />
+        <div className="absolute inset-0 rounded-xl border-2 border-primary-6 border-opacity-60 pointer-events-none" />
       )}
 
       {/* 바닥패와 매칭되는 카드 강조 */}
       {hasFieldMatch && (
         <motion.div
-          className="absolute inset-0 rounded-xl border-3 border-green-400 pointer-events-none"
+          className="absolute inset-0 rounded-xl border-[3px] border-primary-8 pointer-events-none"
           animate={{
-            boxShadow: ['0 0 10px #4ade80', '0 0 25px #4ade80', '0 0 10px #4ade80']
+            boxShadow: ['0 0 10px #DA2F36', '0 0 25px #FF706C', '0 0 10px #DA2F36']
           }}
           transition={{ repeat: Infinity, duration: 1.5 }}
         />
+      )}
+
+      {/* 클릭 유도 화살표 */}
+      {hasFieldMatch && isPlayable && (
+        <motion.div
+          className="absolute -top-6 left-1/2 -translate-x-1/2 text-primary-10 text-2xl drop-shadow-lg arrow-bounce"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+        >
+          ⬇
+        </motion.div>
       )}
     </motion.div>
   );

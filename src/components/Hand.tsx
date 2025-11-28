@@ -42,7 +42,7 @@ const Hand: React.FC<HandProps> = ({
       <motion.div
         className={`
           mb-2 px-4 py-1 rounded-full text-sm font-bold
-          ${isCurrentTurn ? 'bg-yellow-400 text-black' : 'bg-gray-700 text-white'}
+          ${isCurrentTurn ? 'bg-primary-10 text-white' : 'bg-gray-3 text-white'}
         `}
         animate={isCurrentTurn ? { scale: [1, 1.05, 1] } : {}}
         transition={{ repeat: isCurrentTurn ? Infinity : 0, duration: 1 }}
@@ -79,7 +79,7 @@ const Hand: React.FC<HandProps> = ({
       </div>
 
       {/* 카드 수 */}
-      <div className="mt-2 text-gray-400 text-sm">
+      <div className="mt-2 text-white text-sm">
         남은 패: {cards.length}장
       </div>
     </div>

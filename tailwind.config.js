@@ -7,7 +7,19 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Noto Sans KR', 'system-ui', 'sans-serif'],
+        sans: ['"Pretendard"', '"Roboto Flex"', 'system-ui', 'sans-serif'],
+        'primary-kr': ['"Pretendard"', 'sans-serif'],
+        'primary-en': ['"Roboto Flex"', 'sans-serif'],
+      },
+      fontSize: {
+        'h1': ['24px', { lineHeight: '32px', fontWeight: '700' }],
+        'h2': ['20px', { lineHeight: '26px', fontWeight: '600' }],
+        'h3': ['18px', { lineHeight: '26px', fontWeight: '600' }],
+        'h4': ['16px', { lineHeight: '24px', fontWeight: '600' }],
+        'h5': ['15px', { lineHeight: '22px', fontWeight: '600' }],
+        'body1': ['16px', { lineHeight: '24px', fontWeight: '400' }],
+        'body2': ['14px', { lineHeight: '20px', fontWeight: '400' }],
+        'caption': ['13px', { lineHeight: '16px', fontWeight: '500' }],
       },
       animation: {
         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
@@ -24,11 +36,28 @@ export default {
         'gold': '0 0 20px rgba(255, 215, 0, 0.5)',
       },
       colors: {
-        'hwatu': {
-          'green': '#1a472a',
-          'red': '#8b0000',
-          'gold': '#ffd700',
-          'dark': '#1a1a2e',
+        primary: {
+          10: '#DA2F36',
+          8: '#FF706C',
+          6: '#FF9992',
+          4: '#FFE8E2',
+          2: '#FFF2ED',
+        },
+        secondary: {
+          dark: '#A7998D',
+          light: '#F6F1EB',
+        },
+        gray: {
+          10: '#2D2C2B',
+          9: '#403E3C',
+          8: '#5A5856',
+          7: '#7F7C79',
+          6: '#A19E9B',
+          5: '#BDBAB7',
+          4: '#D3D1CE',
+          3: '#E4E2E0',
+          2: '#F3F2F1',
+          1: '#FAFAF9',
         },
       },
     },

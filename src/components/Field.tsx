@@ -26,12 +26,12 @@ const Field: React.FC<FieldProps> = ({
   const matchingIds = new Set(matchingCards.map(c => c.id));
 
   return (
-    <div className="relative bg-green-800 rounded-2xl p-4 min-h-[160px] shadow-inner">
+    <div className="relative bg-primary-2 rounded-2xl p-4 min-h-[160px] shadow-inner border border-primary-4 text-white">
       {/* 바닥 패턴 */}
-      <div className="absolute inset-0 bg-gradient-to-br from-green-700 to-green-900 rounded-2xl opacity-50" />
+      <div className="absolute inset-0 bg-gradient-to-br from-primary-4 to-secondary-light rounded-2xl opacity-60" />
 
       {/* 타이틀 */}
-      <div className="absolute top-2 left-4 text-green-300 text-sm font-bold">
+      <div className="absolute top-2 left-4 text-white text-sm font-semibold">
         바닥 ({cards.length}장)
       </div>
 
@@ -71,7 +71,7 @@ const Field: React.FC<FieldProps> = ({
       {/* 선택 안내 메시지 */}
       {isSelecting && matchingCards.length > 0 && (
         <motion.div
-          className="absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-yellow-500 text-black px-4 py-2 rounded-full text-sm font-bold"
+          className="absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-primary-10 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg"
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
         >

@@ -1,4 +1,26 @@
 @import "tailwindcss";
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400;500;600;700&display=swap');
+
+:root {
+  --color-primary-10: #DA2F36;
+  --color-primary-8: #FF706C;
+  --color-primary-6: #FF9992;
+  --color-primary-4: #FFE8E2;
+  --color-primary-2: #FFF2ED;
+  --color-secondary-dark: #A7998D;
+  --color-secondary-light: #F6F1EB;
+  --color-gray-10: #2D2C2B;
+  --color-gray-9: #403E3C;
+  --color-gray-8: #5A5856;
+  --color-gray-7: #7F7C79;
+  --color-gray-6: #A19E9B;
+  --color-gray-5: #BDBAB7;
+  --color-gray-4: #D3D1CE;
+  --color-gray-3: #E4E2E0;
+  --color-gray-2: #F3F2F1;
+  --color-gray-1: #FAFAF9;
+}
 
 * {
   margin: 0;
@@ -7,9 +29,9 @@
 }
 
 body {
-  font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background-color: #1a1a2e;
-  color: white;
+  font-family: 'Pretendard', 'Roboto Flex', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: var(--color-secondary-light);
+  color: var(--color-gray-10);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -22,17 +44,17 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--color-primary-4);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.3);
+  background: var(--color-primary-8);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.5);
+  background: var(--color-primary-10);
 }
 
 /* 카드 그림자 효과 */
@@ -86,7 +108,7 @@ body {
 
 /* 텍스트 그라데이션 */
 .text-gradient {
-  background: linear-gradient(135deg, #f5af19 0%, #f12711 100%);
+  background: linear-gradient(135deg, var(--color-primary-10) 0%, var(--color-primary-6) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -121,3 +143,108 @@ body {
 .delay-300 { animation-delay: 300ms; }
 .delay-400 { animation-delay: 400ms; }
 .delay-500 { animation-delay: 500ms; }
+
+.neon-border {
+  box-shadow:
+    0 0 8px rgba(218, 47, 54, 0.6),
+    0 0 16px rgba(255, 112, 108, 0.6),
+    0 0 24px rgba(255, 153, 146, 0.4);
+  animation: neonPulse 1.2s ease-in-out infinite;
+}
+
+@keyframes neonPulse {
+  0%, 100% {
+    box-shadow:
+      0 0 6px rgba(218, 47, 54, 0.6),
+      0 0 14px rgba(255, 112, 108, 0.6),
+      0 0 18px rgba(255, 153, 146, 0.4);
+  }
+  50% {
+    box-shadow:
+      0 0 10px rgba(218, 47, 54, 0.9),
+      0 0 22px rgba(255, 112, 108, 0.9),
+      0 0 28px rgba(255, 153, 146, 0.6);
+  }
+}
+
+.arrow-bounce {
+  animation: arrowBounce 0.9s ease-in-out infinite;
+}
+
+@keyframes arrowBounce {
+  0%, 100% { transform: translate(-50%, -6px); }
+  50% { transform: translate(-50%, 2px); }
+}
+
+/* 고스톱 판 배경 및 영역 구분 */
+.board-felt {
+  background-color: #3A4807;
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.05) 0 22%, transparent 32%),
+    radial-gradient(circle at 80% 30%, rgba(0, 0, 0, 0.08) 0 25%, transparent 35%),
+    radial-gradient(circle at 50% 70%, rgba(255, 112, 108, 0.05) 0 18%, transparent 30%);
+}
+
+.section-opponent {
+  background: rgba(255, 242, 237, 0.10);
+  border: 1px solid rgba(255, 242, 237, 0.25);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(4px);
+}
+
+.section-field {
+  background: rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(255, 112, 108, 0.35);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(4px);
+}
+
+.section-me {
+  background: rgba(255, 112, 108, 0.12);
+  border: 1px solid rgba(255, 112, 108, 0.35);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(4px);
+}
+
+@layer utilities {
+  .typo-h1 {
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 700;
+  }
+  .typo-h2 {
+    font-size: 20px;
+    line-height: 26px;
+    font-weight: 600;
+  }
+  .typo-h3 {
+    font-size: 18px;
+    line-height: 26px;
+    font-weight: 600;
+  }
+  .typo-h4 {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 600;
+  }
+  .typo-h5 {
+    font-size: 15px;
+    line-height: 22px;
+    font-weight: 600;
+  }
+  .typo-body1 {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+  }
+  .typo-body2 {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+  }
+  .typo-caption {
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 500;
+  }
+}

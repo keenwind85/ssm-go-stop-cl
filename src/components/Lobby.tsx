@@ -143,9 +143,9 @@ const Lobby: React.FC<LobbyProps> = ({ onGameStart }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-indigo-900 to-black flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-primary-2 via-secondary-light to-gray-1 flex items-center justify-center p-4">
       <motion.div
-        className="bg-black bg-opacity-50 backdrop-blur-lg rounded-3xl p-8 max-w-md w-full shadow-2xl border border-purple-500 border-opacity-30"
+        className="bg-white/90 backdrop-blur-xl rounded-3xl p-8 max-w-md w-full shadow-2xl"
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ type: 'spring', stiffness: 200 }}
@@ -158,18 +158,18 @@ const Lobby: React.FC<LobbyProps> = ({ onGameStart }) => {
         >
           <div className="flex items-center justify-center gap-3 mb-2">
             <img src={logoSvg} alt="로고" className="w-10 h-10" />
-            <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-red-500">
+            <h1 className="typo-h1 text-black">
               순시미네 맞고
             </h1>
           </div>
-          <p className="text-gray-400 text-sm">실시간 1:1 대전</p>
+          <p className="typo-body2 text-gray-7">실시간 1:1 대전</p>
         </motion.div>
 
         {/* 에러 메시지 */}
         <AnimatePresence>
           {error && (
             <motion.div
-              className="bg-red-500 bg-opacity-20 border border-red-500 text-red-300 px-4 py-2 rounded-lg mb-4 text-sm"
+              className="bg-primary-4 border border-primary-10 text-primary-10 px-4 py-2 rounded-lg mb-4 text-sm"
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}
@@ -187,25 +187,25 @@ const Lobby: React.FC<LobbyProps> = ({ onGameStart }) => {
             animate={{ opacity: 1 }}
           >
             <motion.button
-              className="w-full bg-gradient-to-r from-yellow-500 to-orange-500 text-black font-bold py-4 px-6 rounded-xl text-lg shadow-lg"
+              className="w-full bg-[#DA2F36] text-white font-semibold py-4 px-6 rounded-xl text-lg shadow-lg"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={() => setMode('create')}
             >
               🏠 방 만들기
-              <div className="text-xs font-normal mt-1 text-orange-900">
+              <div className="text-xs font-normal mt-1 text-primary-2">
                 새 게임방을 만들고 초대코드로 친구 초대
               </div>
             </motion.button>
 
             <motion.button
-              className="w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold py-4 px-6 rounded-xl text-lg shadow-lg"
+              className="w-full bg-[#DA2F36] text-white font-semibold py-4 px-6 rounded-xl text-lg shadow-lg"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={() => setMode('join')}
             >
               🎯 도전하기
-              <div className="text-xs font-normal mt-1 text-blue-200">
+              <div className="text-xs font-normal mt-1 text-primary-2">
                 초대코드로 상대방 게임방에 입장
               </div>
             </motion.button>
@@ -220,38 +220,38 @@ const Lobby: React.FC<LobbyProps> = ({ onGameStart }) => {
             animate={{ opacity: 1, x: 0 }}
           >
             <div>
-              <label className="text-gray-400 text-sm block mb-1">닉네임</label>
+              <label className="text-gray-7 text-sm block mb-1">닉네임</label>
               <input
                 type="text"
                 value={nickname}
                 onChange={(e) => setNickname(e.target.value)}
                 placeholder="닉네임을 입력하세요"
-                className="w-full bg-gray-800 text-white px-4 py-3 rounded-lg border border-gray-700 focus:border-yellow-500 focus:outline-none"
+                className="w-full bg-gray-1 text-gray-10 px-4 py-3 rounded-lg border border-gray-4 focus:border-primary-8 focus:outline-none"
                 maxLength={10}
               />
             </div>
 
             <div>
-              <label className="text-gray-400 text-sm block mb-1">방 이름</label>
+              <label className="text-gray-7 text-sm block mb-1">방 이름</label>
               <input
                 type="text"
                 value={roomName}
                 onChange={(e) => setRoomName(e.target.value)}
                 placeholder="게임방 이름을 입력하세요"
-                className="w-full bg-gray-800 text-white px-4 py-3 rounded-lg border border-gray-700 focus:border-yellow-500 focus:outline-none"
+                className="w-full bg-gray-1 text-gray-10 px-4 py-3 rounded-lg border border-gray-4 focus:border-primary-8 focus:outline-none"
                 maxLength={20}
               />
             </div>
 
             <div className="flex gap-3">
               <button
-                className="flex-1 bg-gray-700 text-white py-3 rounded-lg"
+                className="flex-1 bg-gray-3 text-gray-9 py-3 rounded-lg"
                 onClick={() => setMode('select')}
               >
                 뒤로
               </button>
               <motion.button
-                className="flex-1 bg-gradient-to-r from-yellow-500 to-orange-500 text-black font-bold py-3 rounded-lg"
+                className="flex-1 bg-gradient-to-r from-primary-10 to-primary-8 text-gray-1 font-semibold py-3 rounded-lg"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={handleCreateRoom}
@@ -271,38 +271,38 @@ const Lobby: React.FC<LobbyProps> = ({ onGameStart }) => {
             animate={{ opacity: 1, x: 0 }}
           >
             <div>
-              <label className="text-gray-400 text-sm block mb-1">닉네임</label>
+              <label className="text-gray-7 text-sm block mb-1">닉네임</label>
               <input
                 type="text"
                 value={nickname}
                 onChange={(e) => setNickname(e.target.value)}
                 placeholder="닉네임을 입력하세요"
-                className="w-full bg-gray-800 text-white px-4 py-3 rounded-lg border border-gray-700 focus:border-blue-500 focus:outline-none"
+                className="w-full bg-gray-1 text-gray-10 px-4 py-3 rounded-lg border border-gray-4 focus:border-primary-8 focus:outline-none"
                 maxLength={10}
               />
             </div>
 
             <div>
-              <label className="text-gray-400 text-sm block mb-1">초대코드</label>
+              <label className="text-gray-7 text-sm block mb-1">초대코드</label>
               <input
                 type="text"
                 value={inviteCode}
                 onChange={(e) => setInviteCode(e.target.value.toUpperCase())}
                 placeholder="6자리 초대코드 입력"
-                className="w-full bg-gray-800 text-white px-4 py-3 rounded-lg border border-gray-700 focus:border-blue-500 focus:outline-none text-center text-2xl tracking-widest"
+                className="w-full bg-gray-1 text-gray-10 px-4 py-3 rounded-lg border border-gray-4 focus:border-primary-8 focus:outline-none text-center text-2xl tracking-widest"
                 maxLength={6}
               />
             </div>
 
             <div className="flex gap-3">
               <button
-                className="flex-1 bg-gray-700 text-white py-3 rounded-lg"
+                className="flex-1 bg-gray-3 text-gray-9 py-3 rounded-lg"
                 onClick={() => setMode('select')}
               >
                 뒤로
               </button>
               <motion.button
-                className="flex-1 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold py-3 rounded-lg"
+                className="flex-1 bg-gradient-to-r from-secondary-dark to-primary-10 text-gray-1 font-semibold py-3 rounded-lg"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={handleJoinRoom}
@@ -322,26 +322,26 @@ const Lobby: React.FC<LobbyProps> = ({ onGameStart }) => {
             animate={{ opacity: 1 }}
           >
             <div>
-              <h2 className="text-xl font-bold text-white mb-2">
+              <h2 className="typo-h2 mb-2 text-gray-10">
                 {currentRoom.name}
               </h2>
-              <p className="text-gray-400 text-sm">도전자를 기다리는 중...</p>
+              <p className="text-gray-7 text-sm">도전자를 기다리는 중...</p>
             </div>
 
-            <div className="bg-gray-800 rounded-xl p-6">
-              <p className="text-gray-400 text-sm mb-2">초대코드</p>
+            <div className="bg-primary-2 rounded-xl p-6 border border-primary-4">
+              <p className="text-gray-7 text-sm mb-2">초대코드</p>
               <motion.div
-                className="text-4xl font-bold text-yellow-400 tracking-widest cursor-pointer"
+                className="text-4xl font-bold text-primary-10 tracking-widest cursor-pointer"
                 whileHover={{ scale: 1.05 }}
                 onClick={copyInviteCode}
               >
                 {currentRoom.inviteCode}
               </motion.div>
-              <p className="text-gray-500 text-xs mt-2">클릭하여 복사</p>
+              <p className="text-gray-6 text-xs mt-2">클릭하여 복사</p>
             </div>
 
             <motion.div
-              className="text-gray-400"
+              className="text-gray-7"
               animate={{ opacity: [0.5, 1, 0.5] }}
               transition={{ repeat: Infinity, duration: 2 }}
             >
@@ -358,23 +358,23 @@ const Lobby: React.FC<LobbyProps> = ({ onGameStart }) => {
             animate={{ opacity: 1 }}
           >
             <div>
-              <h2 className="text-xl font-bold text-white mb-2">
+              <h2 className="typo-h2 mb-2 text-gray-10">
                 {currentRoom.name}
               </h2>
-              <p className="text-green-400 text-sm">대전 준비 완료!</p>
+              <p className="text-primary-10 text-sm font-semibold">대전 준비 완료!</p>
             </div>
 
-            <div className="bg-gray-800 rounded-xl p-6 space-y-4">
+            <div className="bg-primary-2 rounded-xl p-6 space-y-4 border border-primary-4">
               <div className="flex justify-between items-center">
-                <span className="text-gray-400">주최자</span>
-                <span className="text-yellow-400 font-bold">
+                <span className="text-gray-7">주최자</span>
+                <span className="text-primary-10 font-bold">
                   {currentRoom.hostNickname} 👑
                 </span>
               </div>
-              <div className="border-t border-gray-700" />
+              <div className="border-t border-gray-4" />
               <div className="flex justify-between items-center">
-                <span className="text-gray-400">도전자</span>
-                <span className="text-blue-400 font-bold">
+                <span className="text-gray-7">도전자</span>
+                <span className="text-secondary-dark font-bold">
                   {currentRoom.challengerNickname} 🎯
                 </span>
               </div>
@@ -382,7 +382,7 @@ const Lobby: React.FC<LobbyProps> = ({ onGameStart }) => {
 
             {isHost ? (
               <motion.button
-                className="w-full bg-gradient-to-r from-green-500 to-emerald-500 text-white font-bold py-4 rounded-xl text-lg"
+                className="w-full bg-gradient-to-r from-primary-10 to-primary-8 text-gray-1 font-semibold py-4 rounded-xl text-lg"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={handleStartGame}
@@ -392,7 +392,7 @@ const Lobby: React.FC<LobbyProps> = ({ onGameStart }) => {
               </motion.button>
             ) : (
               <motion.div
-                className="text-yellow-400"
+                className="text-primary-10"
                 animate={{ opacity: [0.5, 1, 0.5] }}
                 transition={{ repeat: Infinity, duration: 1.5 }}
               >
